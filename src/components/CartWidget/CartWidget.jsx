@@ -7,7 +7,7 @@ import { TfiShoppingCartFull } from 'react-icons/tfi';
 
 const CartWidget = () => {
   return (
-    <a href = "/"><TfiShoppingCartFull/></a>
+    <a href= "/"><TfiShoppingCartFull/></a>
   )
 }
 
