@@ -1,24 +1,29 @@
-import CartWidget from "../CartWidget/CartWidget";
 import { Navbar } from "../Navbar/Navbar";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
+
+
+
+
 const Header = () => {
+
+    
+
   return (
-    <div
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "20vh",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundImage: `url(https://res.cloudinary.com/dgxnatqij/image/upload/v1675297404/samples/react/Captura_agcnlw.png)` ,
+    <AppBar style={{backgroundImage: `url(https://res.cloudinary.com/dgxnatqij/image/upload/v1676250170/proyectos/perritos_mvohmr.png)`, width:"100%", height:"125px"}}>
        
-      }}
-    >
+        <Toolbar>
+          <Typography variant="h4" style={{display: "flex", alignItems:"center"}}> <Link to="/"> <img src="https://res.cloudinary.com/dgxnatqij/image/upload/v1676252240/proyectos/logoperro_qrkwtv.png" alt="logo" style={{ width: 100, height: 100,marginLeft: '15px', marginTop:'50px'}}/></Link></Typography>
+        </Toolbar>     
+        <CartWidget />
+        <Navbar/>
+        
+        
+    </AppBar>
       
-      <img src="https://w7.pngwing.com/pngs/1020/59/png-transparent-dog-logo-pet-food-cat-pet-food-food-animals-cat-like-mammal.png" alt="logo" style={{ width: 100, height: 100,marginLeft: '40px'}}/>
-      <Navbar />
-      <CartWidget />
-    </div>
-  );
+    );
+   
 };
 
 export default Header;
