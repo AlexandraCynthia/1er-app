@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const ListNavbar = ({ title }) => {
   return (
     <li className="navbar"
@@ -19,9 +20,9 @@ const ListNavbar = ({ title }) => {
       }}
       
     >
-      <a href = "/"> 
+      
       {title}
-      </a>
+     
     </li>
   );
 };

@@ -1,48 +1,92 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
 import ItemList from "../ItemList/ItemList";
+import { PropagateLoader } from "react-spinners";
+import { db } from "../../firebaseConfig";
+import { getDocs, collection, query, where } from "firebase/firestore"
 
-
+const styles = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "#36d7b7",
+};
 
 const ItemListContainer = () => {
-   
-  const {categoryId} = useParams();
-  
+  const { categoryId } = useParams();
+
   const [items, setItems] = useState([]);
 
  
  
-useEffect(()=>{
+  useEffect(() => {
 
-  const productsFiltered = products.filter((product)=>product.category===categoryId)
-
-
-      const task = new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
-          resolve(categoryId ? productsFiltered : products)
-        }, 100)
+    const itemCollection =  collection( db, "products" )
   
-    });
-    task.then((res)=>{
-       setItems(res);
-    })
-    .catch((error)=>{
-      console.log("aca se rechazo",error)
-    });
-  
-    },[categoryId])
+      if(categoryId){
 
-    
+        const q = query( itemCollection, where("category", "==", categoryId))
 
-  
-    return (
-    <>
+     getDocs(q)
+      .then((res)=>{
+         const products = res.docs.map(product => {
+            return {
+               ...product.data(),
+               id: product.id 
+
+            }
+         })
+         setItems( products )
+      })
+      .catch((err)=>console.log("error :" + err))
+
+
       
-      <div style={{display:"flex",  justifyContent:"center", marginTop:"120px"}}> <h1>Bienvenidos a ForPets.com</h1></div> 
-      <ItemList items={items}/>
-    </>
+    }else{
+
+      getDocs(itemCollection)
+      .then( (res)=> {
+        const products = res.docs.map( product => {
+            return {
+              ...product.data(),
+              id: product.id
+            }
+        })
+
+        setItems( products )
+      })
+      .catch((err)=> console.log("error: " + err) )
+
+    }
+
+  }, [categoryId]);
+
+  return (
+    <div>
+      {items.length < 1 ? 
+        (<PropagateLoader className="loader"
+          color={"#36d7b7"}
+          cssOverride={styles}
+          size={60}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />)
+       : (
+        <>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "120px",
+            }}
+          >
+            {" "}
+            <h1>Bienvenidos a ForPets.com</h1>
+          </div>
+          <ItemList items={items} />
+        </>
+      )}
+    </div>
   );
 };
 
-export default ItemListContainer
+export default ItemListContainer;

@@ -1,21 +1,49 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
-import Button from '@mui/material/Button'
+import { Link } from "react-router-dom";
 
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+import Items from "../Item/Item.css"
 
-const Item = ({elemento}) => {
+const Item = ({ elemento }) => {
   return (
-    <div key={elemento.id} style={{border:"1px solid black", width:"400px", height:"500px", marginBottom:"50px"}}>
-    <h2>{elemento.title}</h2>
-    <h2>{elemento.parrafo}</h2>
-    <h2>{elemento.precio}</h2>
-    <img src={elemento.img} alt="" style={{width:"100%", height:"250px"}}/>
-    <Link to={`/item/${elemento.id}`}><Button className='boton' variant="contained" color="secondary">
-      Ver producto
-    </Button></Link>
-  </div>
+    <div className="card">
+    <Card  sx={{ maxWidth: 345 }}  >
+      <CardActionArea >
+        <CardMedia  
+          component="img"
+          height="260"
+          image={elemento.img}
+          alt="imagen"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {elemento.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {elemento.parrafo}
+                      
+          </Typography>
+          
+          <Typography variant="body2" color="text.secondary">
+            Precio: S/{elemento.precio}
+                      
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Link to={`/item/${elemento.id}`}>
+          <Button className="boton" variant="contained" color="secondary">
+            Ver producto
+          </Button>
+        </Link>
+      </CardActions>
+    </Card>
+    </div>
+  );
+};
 
-  )
-}
-
-export default Item
+export default Item;

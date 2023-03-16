@@ -1,0 +1,32 @@
+.containerDetalle{
+widht:50%;
+display: flex;
+justify-content: space-between;
+flex-direction: column;
+height: 200px;
+color: rosybrown;
+
+}
+
+.containerItemDetalle{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+
+}
+
+.imagenContainer{
+width: 40%;
+display: flex;
+justify-content: center;
+
+}
+
+.imagenContainer >img{
+ width: 50%;
+ height: 300px;
+ object-fit: cover;
+}
