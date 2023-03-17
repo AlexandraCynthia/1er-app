@@ -4,6 +4,7 @@ import ItemList from "../ItemList/ItemList";
 import { PropagateLoader } from "react-spinners";
 import { db } from "../../firebaseConfig";
 import { getDocs, collection, query, where } from "firebase/firestore"
+import ItemListCont from "./ItemListCont.css"
 
 const styles = {
   display: "block",
@@ -79,7 +80,7 @@ const ItemListContainer = () => {
               marginTop: "120px",
             }}
           >
-            {" "}
+            
             <h1>Bienvenidos a ForPets.com</h1>
           </div>
           <ItemList items={items} />

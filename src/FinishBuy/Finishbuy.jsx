@@ -6,15 +6,20 @@ const Finishbuy = ({orderId}) => {
   return (
     <div>
        <div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <h1>El id de la compra es: {orderId} </h1>
-    <Link to="/">Volver al home</Link>  
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <h1>La compra fue realizada</h1>
+          <h1>El id de la compra es: {orderId} </h1>
+          <Link to="/"> Volver al home</Link>  
   
-    </div> 
+        </div> 
     </div>
   )
 }

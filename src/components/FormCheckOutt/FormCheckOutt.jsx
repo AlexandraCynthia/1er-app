@@ -13,7 +13,7 @@ import {
 
 const FormCheckOutt = ({cart, total, clearCart, setOrderId}) => {
 
-    const [userInfo, setUserInfo] = useState({telefono:"", email:""})
+    const [userInfo, setUserInfo] = useState({nombre: "", telefono:"", email:""})
 
 
     const handleSubmit = (e) =>{
@@ -61,7 +61,7 @@ const FormCheckOutt = ({cart, total, clearCart, setOrderId}) => {
     <br /> 
     <br /> 
    <form onSubmit={handleSubmit}>
-
+     <input type="text" placeholder='Ingresa nombre' name="nombres y apellidos" onChange={(e)=>setUserInfo({...userInfo, nombre: e.target.value})} />
      <input type="text" placeholder='Ingresa telefono' name="telefono" onChange={(e)=>setUserInfo({...userInfo, telefono: e.target.value})} />
      <input type="text" placeholder='Ingresa tu correo' name="email" onChange={(e)=>setUserInfo({...userInfo, email: e.target.value})}/>
      <button>Comprar</button>

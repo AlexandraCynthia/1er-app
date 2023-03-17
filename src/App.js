@@ -25,7 +25,7 @@ function App() {
               
               <Route path="/login" element={ <Login />} />   
  
-              <Route path="*" element={<h1 style={{paddingTop:"100px"}}>Error 404 not found</h1>} />   
+              <Route path="*" element={<h1 style={{paddingTop:"100px"}}>Error 404 not found </h1>} />   
             </Routes>
         </CartContextProvider>
       </BrowserRouter>

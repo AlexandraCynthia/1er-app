@@ -33,7 +33,7 @@ const ItemDetail = ({ product }) => {
     }).then((result) => {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
-        console.log("I was closed by the timer");
+        
       }
     });
   };
@@ -43,6 +43,7 @@ const ItemDetail = ({ product }) => {
   return (
     <div className={styles.containerItemDetalle}>
       <div className={styles.imagenContainer}>
+        <br />
         <br />
         <br />
         <br />
